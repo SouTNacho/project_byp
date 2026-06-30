@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYP - Registro Paciente</title>
+    <link rel="stylesheet" href="/css/register_patient.css">
+</head>
+<body>
+    <div>
+        <form action="" method="post" id="register_patient_form">
+            <div>
+                <h2>Registrar Paciente</h2>
+            </div>
+            <fieldset>
+                <legend>Informacion de la persona</legend>
+                <div>
+                    <label for="patient_document">Documento</label>
+                    <input type="text" name="patient_document"
+                    id="patient_document" required
+                    placeholder="54321098">
+                    <span id="patient_document_msg"></span>
+                </div>
+                <div>
+                    <label for="patient_first_name">Nombre</label>
+                    <input type="text" name="patient_first_name"
+                    id="patient_first_name" required
+                    placeholder="Jhon">
+                    <span id="patient_first_name_msg"></span>
+                </div>
+                <div>
+                    <label for="patient_last_name">Apellido</label>
+                    <input type="text" name="patient_last_name"
+                    id="patient_last_name" required
+                    placeholder="Doe">
+                    <span id="patient_last_name_msg"></span>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Información del acompañante</legend>
+                <div>
+                    <label for="contact_patient_document">Documento</label>
+                    <input type="text" name="contact_patient_document"
+                    id="contact_patient_document" placeholder="Opcional">
+                    <span id="contact_patient_document_msg"></span>
+                </div>
+                <div>
+                    <label for="contact_patient_first_name">Nombre</label>
+                    <input type="text" name="contact_patient_first_name"
+                    id="contact_patient_first_name" placeholder="Opcional">
+                    <span id="contact_patient_first_name_msg"></span>
+                </div>
+                <div>
+                    <label for="contact_patient_last_name">Apellido</label>
+                    <input type="text" name="contact_patient_last_name"
+                    id="contact_patient_last_name" placeholder="Opcional">
+                    <span id="contact_patient_last_name_msg"></span>
+                </div>
+            </fieldset>
+            <div>
+                <input type="submit" name="patient_register_btn"
+                id="patient_register_btn" value="Registrar">
+            </div>
+        </form>
+    </div>
+    <script type="module" src="/js/register_patient.js"></script>
+</body>
+</html>

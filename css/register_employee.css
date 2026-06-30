@@ -1,0 +1,19 @@
+.valid {
+    border: 1px solid #6b6;
+}
+
+.invalid {
+    border: 1px solid #f20;
+}
+
+.cheked {
+    background-color: #6b6;
+}
+
+.uncheked {
+    background-color: #f20;
+}
+
+.other_locality_container, .update_container {
+    display: none;
+}

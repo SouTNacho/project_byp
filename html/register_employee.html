@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/register_employee.css">
+</head>
+<body>
+    <div class="general-container">
+        <div>
+            <button id="register">Registrar</button>
+            <button id="update">Actualizar</button>
+        </div>
+        <div>
+            <form action="" method="post" id="employee_form">
+                <div>
+                    <h1></h1>
+                </div>
+                <div class="update_container" id="update_container">
+                    <label for="employee_id">Código del Funcionario</label>
+                    <input type="text" name="employee_id"
+                    id="employee_id">
+                    <span id="employee_id_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_first_name">Nombre</label>
+                    <input type="text" name="employee_first_name"
+                    id="employee_first_name" required
+                    placeholder="Jhon">
+                    <span id="employee_first_name_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_last_name">Apellido</label>
+                    <input type="text" name="employee_last_name"
+                    id="employee_last_name" required
+                    placeholder="Doe">
+                    <span id="employee_last_name_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_document">Documento</label>
+                    <input type="text" name="employee_document"
+                    id="employee_document" required
+                    placeholder="54321092">
+                    <span id="employee_document_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_nationality">Nacionalidad</label>
+                    <select name="employee_nationality" id="employee_nationality">
+                        <option value="">Seleccione una opción</option>
+                    </select>
+                    <span id="employee_nationality_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_birthdate">Fecha Nacimiento</label>
+                    <input type="date" name="employee_birthdate"
+                    id="employee_birthdate" required>
+                    <span id="employee_birthdate_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_department">Departamento</label>
+                    <select name="employee_department" id="employee_department">
+                        <option value="">Seleccione una opción</option>
+                    </select>
+                    <span id="employee_department_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_locality">Localidad</label>
+                    <select name="employee_locality" id="employee_locality">
+                        <option value="">Seleccione una opción</option>
+                    </select>
+                    <span id="employee_locality_msg"></span>
+                </div>
+                <div class="other_locality_container">
+                    <label for="other_locality">Otra Localidad</label>
+                    <input type="text" name="other_locality"
+                    id="other_locality">
+                    <span id="other_locality_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_direction">Dirección</label>
+                    <input type="text" name="employee_direction"
+                    id="employee_direction" required
+                    placeholder="Sarandí esq. Leandro Gómez">
+                    <span id="employee_direction_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_apartment">Numero de Puerta</label>
+                    <input type="text" name="employee_apartment"
+                    id="employee_apartment" placeholder="1489 Bis">
+                    <span id="employee_apartment_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_email">Correo Electrónico</label>
+                    <input type="email" name="employee_email"
+                    id="employee_email" required
+                    placeholder="example@email.mc">
+                    <span id="employee_email_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_cellphone_number">Numero de Celular
+                        <select name="employee_cellphone_code" id="employee_cellphone_code">
+                            <option value="">Seleccione una opción</option>
+                        </select>
+                        <input type="text" name="employee_cellphone_number"
+                        id="employee_cellphone_number" required
+                        placeholder="99789876">
+                        <span id="employee_cellphone_number_msg"></span>
+                    </label>
+                </div>
+                <div>
+                    <label for="employee_position">Cargo</label>
+                    <select name="employee_position" id="employee_position">
+                        <option value="">Seleccione una opción</option>
+                        <option value="FA">Administrativo</option>
+                        <option value="DR">Conductor</option>
+                        <option value="CO">Copiloto</option>
+                    </select>
+                    <span id="employee_position_msg"></span>
+                </div>
+                <div id="specialst_information"></div>
+                <div>
+                    <label for="employee_entry_date">Fecha Ingreso</label>
+                    <input type="date" name="employee_entry_date"
+                    id="employee_entry_date" required>
+                    <span id="employee_entry_date_msg"></span>
+                </div>
+                <div>
+                    <label for="employee_password">Contraseña</label>
+                    <input type="password" name="employee_password" 
+                    id="employee_password" required>
+                    <span id="employee_password_msg"></span>
+                </div>
+                <div>
+                    <label for="confirm_password">Confirmar Contraseña</label>
+                    <input type="password" name="confirm_password"
+                    id="confirm_password" required>
+                    <span id="confirm_password_msg"></span>
+                </div>
+                <div>
+                    <input type="submit" value="" name="employee_register_btn"
+                    id="employee_register_btn" class="uncheked">
+                    <span id="employee_register_btn_msg">❌️ Debe seleccionar una opción ( Registrar || Actualizar ) </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="/js/register_employee.js"></script>
+</body>
+</html>
