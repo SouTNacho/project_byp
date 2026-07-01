@@ -32,7 +32,7 @@ register.addEventListener('click', () => {
     submit_btn.classList.remove("uncheked")
     submit_btn_msg.textContent = ""
 
-    update_container.classList.add("update_container")
+    update_container.classList.add("hidden")
     employee_id.required = false
     employee_id.value = ""
     id_msg.textContent = ""
@@ -53,10 +53,8 @@ update.addEventListener('click', () => {
     submit_btn.classList.remove("uncheked")
     submit_btn_msg.textContent = ""
 
-    // Crear una clase elemen_hiden o mejorar
-    update_container.classList.remove("update_container")
-    employee_id.required = true
-    employee_id.addEventListener('input', () => formTools.loginValidator.idEmployeeInput(employee_id, id_msg))
+    update_container.classList.remove("hidden")
+    employee_id.required = true 
 })
 
 const employee_first_name = document.querySelector("#employee_first_name")
@@ -106,12 +104,8 @@ employee_department.addEventListener('change', () => {
     registerValidator.selectsInput(employee_department, department_msg)
 })
 
-employee_locality.addEventListener('change', () => {
-
-    registerValidator.localitySelect(employee_locality, locality_msg, other_locality, other_locality_container)
-    other_locality.addEventListener('input', () => registerValidator.stringsInput(other_locality, other_locality_msg))
-})
-
+employee_locality.addEventListener('change', () => registerValidator.localitySelect(employee_locality, locality_msg, other_locality, other_locality_container))
+employee_id.addEventListener("input", () => formTools.loginValidator.idEmployeeInput(employee_id, id_msg))
 employee_first_name.addEventListener('input', () => registerValidator.stringsInput(employee_first_name, first_name_msg))
 employee_last_name.addEventListener('input', () => registerValidator.stringsInput(employee_last_name, last_name_msg))
 employee_document.addEventListener('input', () => registerValidator.documentIdInput(employee_document, document_msg))
@@ -125,6 +119,7 @@ employee_cellphone_number.addEventListener('input', () => registerValidator.phon
 employee_entry_date.addEventListener('input', () => registerValidator.dateInput(employee_entry_date, entry_date_msg))
 employee_password.addEventListener('input', () => registerValidator.passwordInput(employee_password, password_msg))
 confirm_password.addEventListener('input', () => registerValidator.passwordMatch(confirm_password, confirm_password_msg, employee_password))
+other_locality.addEventListener("input", () => registerValidator.stringsInput(other_locality, other_locality_msg))
 
 employee_position.addEventListener('change', async () => {
 
@@ -143,7 +138,7 @@ employee_position.addEventListener('change', async () => {
             employee_permissions = document.querySelector("#employee_permissions")
             permissions_msg = document.querySelector("#employee_permissions_msg")
             employee_permissions.addEventListener('change', () => registerValidator.selectsInput(employee_permissions, permissions_msg))
-        } catch {
+        } catch(error) {
 
             console.error("Error:", error.message)
         }
@@ -164,7 +159,7 @@ employee_position.addEventListener('change', async () => {
 
             license_expired.addEventListener('input', () => registerValidator.dateInput(license_expired, license_expired_msg))
             license_category.addEventListener('change', () => registerValidator.selectsInput(license_category, license_category_msg))
-        } catch {
+        } catch(error) {
 
             console.error("Error:", error.message)
         }
@@ -180,7 +175,7 @@ employee_position.addEventListener('change', async () => {
             employee_especiality = document.querySelector("#employee_especiality")
             especiality_msg = document.querySelector("#employee_especiality_msg")
             employee_especiality.addEventListener('change', () => registerValidator.selectsInput(employee_especiality, especiality_msg))
-        } catch {
+        } catch(error) {
 
             console.error("Error:", error.message)
         }
@@ -188,8 +183,91 @@ employee_position.addEventListener('change', async () => {
 
 })
 
-// Validar envio
 
-//form.add('submit', () => {})
+form.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    if (btn_cheked === "update") {
+
+        if (!formTools.loginValidator.idEmployeeInput(employee_id, id_msg)) {
+
+            alert("Debe completar el código de funcionario")
+            return
+        }
+    }
+    else if (btn_cheked === "register") {
+
+        console.log("Se realizo un registro de funcionario")
+    }
+    else {
+        
+        alert("Debe selecionar una opcion del CRUD")
+        return
+    }
+
+    if (employee_position.value === "FA") {
+
+        if (!registerValidator.selectsInput(employee_permissions, permissions_msg)) {
+
+            alert("Debe completar todos los campos")
+            return
+        }
+    }
+    else if (employee_position.value === "DR") {
+
+        if (!registerValidator.dateInput(license_expired, license_expired_msg) ||
+            !registerValidator.selectsInput(license_category, license_category_msg)) {
+
+            alert("Debe completar todos los campos")
+            return
+        }
+    }
+    else if (employee_position.value === "CO") {
+        
+        if (!registerValidator.selectsInput(employee_especiality, especiality_msg)) {
+
+            alert("Debe completar todos los campos")
+            return
+        }
+    }
+    else {
+
+        alert("Debe seleccionar un cargo valido")
+        return
+    }
+
+    if (other_locality.required && !registerValidator.stringsInput(other_locality, other_locality_msg)) {
+
+        alert("Debe completar todos los campos")
+        return
+    }
+
+    if (!registerValidator.fullPhoneNumber(employee_cellphone_code, employee_cellphone_number)) {
+
+        alert("El celular ingresado no es correcto")
+        return
+    }
+
+    if (!registerValidator.stringsInput(employee_first_name, first_name_msg) ||
+        !registerValidator.stringsInput(employee_last_name, last_name_msg) ||
+        !registerValidator.documentIdInput(employee_document, document_msg) ||
+        !registerValidator.selectsInput(employee_nationality, nationality_msg) ||
+        !registerValidator.dateInput(employee_birthdate, birthdate_msg) ||
+        !registerValidator.stringsInput(employee_direction, direction_msg) ||
+        !registerValidator.doorNumberInput(employee_apartment, apartment_msg) ||
+        !registerValidator.emailInput(employee_email, email_msg) ||
+        !registerValidator.selectsInput(employee_cellphone_code, cellphone_number_msg) ||
+        !registerValidator.dateInput(employee_entry_date, entry_date_msg) ||
+        !registerValidator.passwordInput(employee_password, password_msg) || 
+        !registerValidator.passwordMatch(confirm_password, confirm_password_msg, employee_password) ||
+        !registerValidator.localitySelect(employee_locality, locality_msg, other_locality, other_locality_container) ||
+        !registerValidator.selectsInput(employee_department, department_msg)) {
+
+            alert("Debe completar todos los campos")
+            return
+        }
+
+        form.submit()
+})
 
 

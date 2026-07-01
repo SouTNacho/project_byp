@@ -14,6 +14,10 @@
     background-color: #f20;
 }
 
-.other_locality_container, .update_container {
+.other_locality_container {
+    display: none;
+}
+
+.hidden {
     display: none;
 }
