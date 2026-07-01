@@ -9,6 +9,7 @@ const submit_btn_msg = document.querySelector("#employee_register_btn_msg")
 const update_container = document.querySelector("#update_container")
 const employee_id = document.querySelector("#employee_id")
 const id_msg = document.querySelector("#employee_id_msg")
+const title = document.querySelector(".form_title")
 
 let btn_cheked
 let employee_especiality
@@ -37,13 +38,12 @@ register.addEventListener('click', () => {
     employee_id.value = ""
     id_msg.textContent = ""
     employee_id.classList.remove("valid", "invalid")
-    
-
+    title.textContent = "Registro de funcionario"
 })
 
 update.addEventListener('click', () => {
 
-    form.action = "/php/employee_register.php"
+    form.action = "/php/employee_update.php"
 
     submit_btn.value = "Actualizar Funcionario"
     update.classList.add("cheked")
@@ -54,7 +54,8 @@ update.addEventListener('click', () => {
     submit_btn_msg.textContent = ""
 
     update_container.classList.remove("hidden")
-    employee_id.required = true 
+    employee_id.required = true
+    title.textContent = "Actualización de funcionario"
 })
 
 const employee_first_name = document.querySelector("#employee_first_name")
